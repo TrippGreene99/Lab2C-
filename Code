@@ -1,0 +1,71 @@
+using System;
+
+class StockItem{
+
+   private static int count=1;
+   private string description;
+   private int variableID,variableQuantity=0;
+   private double variablePrice;
+
+    public StockItem(){
+
+      setDescription("");
+      addQuantity(0);
+      setVariablePrice(0.0);
+      variableID=count++;
+
+    }
+
+   public StockItem(string description,int variableQuantity,double variablePrice){
+
+      setDescription(description);
+      addQuantity(variableQuantity);
+      setVariablePrice(variablePrice);
+      variableID=count++;
+
+    }
+
+   public void setDescription(string description){this.description=description;}
+   public void setVariablePrice(double variablePrice){this.variablePrice=variablePrice;}
+
+   public void addQuantity(int variableQuantity){this.variableQuantity+=variableQuantity;}
+   public void removeQuantity(int variableQuantity){this.variableQuantity-=variableQuantity;}
+
+   public string getDescription(){ return description;}
+   public int getVariableQuantity(){return variableQuantity;}
+   public double getVariablePrice(){return variablePrice;}
+   public int getVariableID(){return variableID;}
+
+   public override string ToString(){
+
+       string s="\nDescription : "+getDescription()+
+               "\nVariableID : "+getVariableID()+
+               "\nVariable Quantity : "+getVariableQuantity()+
+               "\nVariablePrice : "+getVariablePrice();
+       return s;
+
+   }
+
+}
+class StockItemDemo{
+   static void Main() {
+       StockItem s=new StockItem();
+       Console.Write("Enter Stock Description :");
+       s.setDescription(Console.ReadLine());
+       Console.Write("Enter Stock Quantity :");
+       s.addQuantity(Convert.ToInt32(Console.ReadLine()));
+       Console.Write("Enter Stock Price :");
+       s.setVariablePrice(Convert.ToDouble(Console.ReadLine()));
+       Console.WriteLine(s);
+       Console.Write("Enter Stock Quantity To Remove:");
+
+
+       s.removeQuantity(Convert.ToInt32(Console.ReadLine()));
+          
+       Console.WriteLine("After Removing :");
+
+       Console.WriteLine(s);
+       
+   }
+
+}
